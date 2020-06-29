@@ -32,11 +32,11 @@ $(document).ready(function(){
           var singleFestivity = festivityCalendar[i].date;
           console.log(singleFestivity);
 
-         if (singleFestivity === $('.day-calendar').attr('data-date')) {
-          $('.day-calendar').addClass('festivity');
-
-
-         }
+          for (var j = 0; j < $('.calendar').length; j++) {
+            if (singleFestivity === $('.day-calendar').attr('data-date')) {
+              $('.day-calendar').addClass('festivity');
+            }
+          }
 
         };
       },
