@@ -11,8 +11,7 @@ $(document).ready(function(){
 
   // Ciclo in base al numero dei giorni del mese corrente
   for (var i = 0; i < totDayMonth; i++) {
-    var newDay = startDate.add(i,'days');
-    console.log(newDay);
+    var newDay = moment(startDate).add(i,'days');
     var day = (newDay.format('D'));
     var month = (newDay.format('MMMM'));
     var dateToStamp = {day: day, month: month}
@@ -20,22 +19,4 @@ $(document).ready(function(){
     $('.calendar').append(html);
   };
 
-  // Chiamata Ajax per vedere le festività del mese corrente
-  // $.ajax({
-  //   url: 'https://flynn.boolean.careers/exercises/api/holidays?year=2018&month=0',
-  //   method: 'GET',
-  //   success: function(data) {
-  //
-  //     // Vedere le festività del mese corrente
-  //     var festivityCalendar = data.response;
-  //     for (var i = 0; i < festivityCalendar.length; i++) {
-  //       var singleFestivity = festivityCalendar[i].date;
-  //       console.log(singleFestivity);
-  //     };
-  //   },
-  //   error: function() {
-  //     alert('errore per reperire info su festività');
-  //   }
-  // });
-  // Fine chiamata ajax
 });
