@@ -31,9 +31,12 @@ $(document).ready(function(){
         var festivityCalendar = data.response;
         for (var i = 0; i < festivityCalendar.length; i++) {
           var singleFestivity = festivityCalendar[i].date;
+          var nameFestivity = festivityCalendar[i].name;
+          console.log(nameFestivity);
 
           // Chi ha l'attributo data-date uguale alla festività
           // prende la classe per evidenziare la festività
+          $(".day-calendar[data-date='" + singleFestivity + "']").append(" &minus; " + nameFestivity);
           $(".day-calendar[data-date='" + singleFestivity + "']").addClass("festivity");
         };
       },
