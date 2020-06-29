@@ -11,3 +11,7 @@
 .calendar {
   padding-left: 25px;
 }
+.day-calendar.festivity {
+  font-weight: bold;
+  color: red;
+}
