@@ -8,8 +8,6 @@ $(document).ready(function(){
     }
   );
 
-  // Calcolo quanti giorni ha il mese corrente
-  var totDayMonth = startDate.daysInMonth();
   // Stampo i giorni del mese corrente usando una funzione
   printDays(startDate);
   highlightFestivity(startDate);
@@ -44,6 +42,9 @@ $(document).ready(function(){
     // Uso un template con Handelbars per scrivere la lista dei giorni
     var source = document.getElementById("calendar-template").innerHTML;
     var template = Handlebars.compile(source);
+
+    // Calcolo quanti giorni ha il mese corrente
+    var totDayMonth = startDate.daysInMonth();
 
     // Ciclo in base al numero dei giorni del mese corrente per stampare
     for (var i = 1; i <= totDayMonth; i++) {
