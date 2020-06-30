@@ -14,13 +14,16 @@
     <h2 class="current-month" data-current-month=""></h2>
     <button type="button" name="button" id="prev">&lt;&minus; Precedente</button>
     <button type="button" name="button" id="next">Successivo &minus;&gt;</button>
+    <div class="calendar">
 
-    <ul class="calendar"></ul>
+    </div>
+    <!-- <ul class="calendar"></ul> -->
     <!-- Fine calendario -->
 
     <!-- Template di Handlebars per il calendario -->
     <script id="calendar-template" type="text/x-handlebars-template">
-    <li class='day-calendar' data-date="{{date}}">{{day}} {{month}}</li>
+      <div class='day-calendar' data-date="{{date}}" data-week-day="{{dayweek}}">{{day}} {{month}}</div>
+      <!-- <li class='day-calendar' data-date="{{date}}">{{day}} {{month}}</li> -->
     </script>
     <!-- Fine template di Handlebars per il calendario -->
 

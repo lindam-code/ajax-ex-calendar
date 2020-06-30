@@ -9,7 +9,14 @@
   padding-left: 15px;
 }
 .calendar {
-  padding-left: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 700px;
+}
+.day-calendar {
+  height: 100px;
+  flex-basis: 100px;
+  border: 1px solid black;
 }
 .day-calendar.festivity {
   font-weight: bold;

@@ -68,7 +68,6 @@ $(document).ready(function(){
     $('.current-month').text(startDate.format('MMMM YYYY'));
     $('.current-month').attr('data-current-month', startDate.format('YYYY-MM-DD'));
 
-
     // Uso un template con Handelbars per scrivere la lista dei giorni
     var source = document.getElementById("calendar-template").innerHTML;
     var template = Handlebars.compile(source);
@@ -86,9 +85,13 @@ $(document).ready(function(){
       // var newDay = moment(startDate).add(i,'days');
       var day = (currentDay.format('D'));
       var month = (currentDay.format('MMMM'));
-      // creo un attributo per salvare la data ed usarla per controllare se è festività
+      // Creo un attributo per salvare la data ed usarla per controllare se è festività
       var totalDate = currentDay.format('YYYY-MM-DD');
-      var dateToStamp = {day: day, month: month, date: totalDate};
+      // Creo un attributo per salvare il giorno della settimana
+      // lo userò per stampare il calendario a griglia
+      var dayWeek = currentDay.format('dddd');
+      // Stampa nel DOM usando il templato di Handlebars
+      var dateToStamp = {day: day, month: month, date: totalDate, dayweek: dayWeek};
       var html = template(dateToStamp);
       $('.calendar').append(html);
     };
