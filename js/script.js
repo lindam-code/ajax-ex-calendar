@@ -14,6 +14,16 @@ $(document).ready(function(){
   printDays(startDate);
   highlightFestivity(startDate);
 
+  // Creo evento click sul tasto next
+  $('#next').click(function(){
+    var currentMonth = $('.current-month').attr('data-current-month');
+    var momentCurrentMonth = moment(currentMonth);
+    var nextMonth = momentCurrentMonth.add(1,'months');
+    printDays(nextMonth);
+    highlightFestivity(nextMonth);
+
+  });
+
   // INIZIO FUNZIONI
 
   // Funzione che stampa i giorni di un mese scelto
@@ -21,6 +31,16 @@ $(document).ready(function(){
   // il primo giorno del mese scelto
   // Return: niente, stampa solo a schermo
   function printDays(startDate) {
+    // Pulisco la lista prima di scrivere nuovi giorni
+    $('.calendar').html('');
+
+    // Stampo nel titolo il nome del mese corrente e
+    // salvo in un attributo la data del primo giorno del mese corrente
+    // per memorizzarla ed utilizzarla nei tasti next e prev
+    $('.current-month').text(startDate.format('MMMM YYYY'));
+    $('.current-month').attr('data-current-month', startDate.format('YYYY-MM-DD'));
+
+
     // Uso un template con Handelbars per scrivere la lista dei giorni
     var source = document.getElementById("calendar-template").innerHTML;
     var template = Handlebars.compile(source);
