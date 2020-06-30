@@ -21,13 +21,35 @@ $(document).ready(function(){
     // Aggiungo un mese e la uso con le funzioni per stampare i gironi
     // ed evidenziare le festività
     var nextMonth = momentCurrentMonth.add(1,'months');
+    // Controllo se siamo ancora nel 2018, sennò la funzione API
+    // per le festività non funziona e quindi blocco la navigazione
+    // e avviso l'utente
     if (nextMonth.year() === 2018) {
       printDays(nextMonth);
       highlightFestivity(nextMonth);
     } else {
       alert('Mi dispiace, puoi navigare solo nel 2018.');
     };
+  });
 
+  // Creo evento sul bottone prev
+  $('#prev').click(function(){
+    // Prendo dall'attributo nel titolo la data del primo giorno del mese corrente
+    var currentMonth = $('.current-month').attr('data-current-month');
+    // La trasformo in un oggetto moment
+    var momentCurrentMonth = moment(currentMonth);
+    // Sottraggo un mese e la uso con le funzioni per stampare i gironi
+    // ed evidenziare le festività
+    var prevMonth = momentCurrentMonth.subtract(1,'months');
+    // Controllo se siamo ancora nel 2018, sennò la funzione API
+    // per le festività non funziona e quindi blocco la navigazione
+    // e avviso l'utente
+    if (prevMonth.year() === 2018) {
+      printDays(prevMonth);
+      highlightFestivity(prevMonth);
+    } else {
+      alert('Mi dispiace, puoi navigare solo nel 2018.');
+    };
   });
 
   // INIZIO FUNZIONI
