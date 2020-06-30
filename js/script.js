@@ -10,23 +10,40 @@ $(document).ready(function(){
 
   // Calcolo quanti giorni ha il mese corrente
   var totDayMonth = startDate.daysInMonth();
-  // Stampo i giorni del mese corrente
-  // Uso un template con Handelbars per scrivere la lista dei giorni
-  var source = document.getElementById("calendar-template").innerHTML;
-  var template = Handlebars.compile(source);
+  // Stampo i giorni del mese corrente usando una funzione
+  printDays(startDate);
 
-  // Ciclo in base al numero dei giorni del mese corrente per stampare
-  for (var i = 0; i < totDayMonth; i++) {
-    var newDay = moment(startDate).add(i,'days');
-    var day = (newDay.format('D'));
-    var month = (newDay.format('MMMM'));
-    // creo un attributo per salvare la data ed usarla per controllare se è festività
-    var totalDate = newDay.format('YYYY-MM-DD');
-    var dateToStamp = {day: day, month: month, date: totalDate};
-    var html = template(dateToStamp);
-    $('.calendar').append(html);
+  // INIZIO FUNZIONI
+
+  // Funzione che stampa i giorni di un mese scelto
+  // Accetta: startDate che è un oggetto moment che rappresenta
+  // il primo giorno del mese scelto
+  // Return: niente, stampa solo a schermo
+  function printDays(startDate) {
+    // Uso un template con Handelbars per scrivere la lista dei giorni
+    var source = document.getElementById("calendar-template").innerHTML;
+    var template = Handlebars.compile(source);
+
+    // Ciclo in base al numero dei giorni del mese corrente per stampare
+    for (var i = 1; i <= totDayMonth; i++) {
+      var currentDay = moment({
+        day:i,
+        month: startDate.month(),
+        year: startDate.year()
+      })
+      // var newDay = moment(startDate).add(i,'days');
+      var day = (currentDay.format('D'));
+      var month = (currentDay.format('MMMM'));
+      // creo un attributo per salvare la data ed usarla per controllare se è festività
+      var totalDate = currentDay.format('YYYY-MM-DD');
+      var dateToStamp = {day: day, month: month, date: totalDate};
+      var html = template(dateToStamp);
+      $('.calendar').append(html);
+    };
   };
 
+  // FINE FUNZIONI
+  
   // Chiamata Ajax per vedere le festività del mese corrente
     $.ajax({
       url: 'https://flynn.boolean.careers/exercises/api/holidays?year=2018&month=0',
