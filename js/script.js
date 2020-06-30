@@ -1,6 +1,12 @@
 $(document).ready(function(){
   // Setto primo giorno dell'anno di interesse
-  var startDate = moment("2018-01-01");
+  var startDate = moment(
+    {
+    day:01,
+    month:0,
+    year:2018
+    }
+  );
 
   // Calcolo quanti giorni ha il mese corrente
   var totDayMonth = startDate.daysInMonth();
