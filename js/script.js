@@ -14,11 +14,19 @@ $(document).ready(function(){
 
   // Creo evento click sul tasto next
   $('#next').click(function(){
+    // Prendo dall'attributo nel titolo la data del primo giorno del mese corrente
     var currentMonth = $('.current-month').attr('data-current-month');
+    // La trasformo in un oggetto moment
     var momentCurrentMonth = moment(currentMonth);
+    // Aggiungo un mese e la uso con le funzioni per stampare i gironi
+    // ed evidenziare le festività
     var nextMonth = momentCurrentMonth.add(1,'months');
-    printDays(nextMonth);
-    highlightFestivity(nextMonth);
+    if (nextMonth.year() === 2018) {
+      printDays(nextMonth);
+      highlightFestivity(nextMonth);
+    } else {
+      alert('Mi dispiace, puoi navigare solo nel 2018.');
+    };
 
   });
 
