@@ -12,6 +12,7 @@ $(document).ready(function(){
   var totDayMonth = startDate.daysInMonth();
   // Stampo i giorni del mese corrente usando una funzione
   printDays(startDate);
+  highlightFestivity(startDate);
 
   // INIZIO FUNZIONI
 
@@ -42,12 +43,16 @@ $(document).ready(function(){
     };
   };
 
-  // FINE FUNZIONI
-  
-  // Chiamata Ajax per vedere le festività del mese corrente
+  // Funzione che evidenzia le festività del 2018 facendo una chiamata API
+  // Accetta: startDate che è un oggetto moment che rappresenta
+  // il primo giorno del mese di cui voglio evidenziare festività
+  // Return: niente, stampa solo a schermo
+  function highlightFestivity(startDate) {
+    // Chiamata Ajax per vedere le festività del mese corrente
     $.ajax({
-      url: 'https://flynn.boolean.careers/exercises/api/holidays?year=2018&month=0',
+      url: 'https://flynn.boolean.careers/exercises/api/holidays',
       method: 'GET',
+      data: {year: startDate.year(), month: startDate.month()},
       success: function(data) {
 
         // Vedere le festività del mese corrente
@@ -55,7 +60,6 @@ $(document).ready(function(){
         for (var i = 0; i < festivityCalendar.length; i++) {
           var singleFestivity = festivityCalendar[i].date;
           var nameFestivity = festivityCalendar[i].name;
-          console.log(nameFestivity);
 
           // Chi ha l'attributo data-date uguale alla festività
           // prende la classe per evidenziare la festività
@@ -67,5 +71,8 @@ $(document).ready(function(){
         alert('errore per reperire info su festività');
       }
     });
-  // Fine chiamata ajax
+    // Fine chiamata ajax
+  };
+  // FINE FUNZIONI
+
 });
