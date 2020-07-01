@@ -13,6 +13,19 @@
   flex-wrap: wrap;
   width: 700px;
 }
+.calendar-title {
+  display: flex;
+  flex-wrap: wrap;
+  width: 700px;
+}
+.day-title {
+  height: 50px;
+  flex-basis: 100px;
+  border: 1px solid black;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 15px;
+}
 .day-calendar {
   height: 100px;
   flex-basis: 100px;
