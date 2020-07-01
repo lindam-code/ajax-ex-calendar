@@ -31,7 +31,10 @@
 
     <!-- Template di Handlebars per il calendario -->
     <script id="calendar-template" type="text/x-handlebars-template">
-      <div class='day-calendar' data-date="{{date}}">{{day}} {{month}} {{dayweek}}</div>
+      <div class='day-calendar' data-date="{{date}}">
+        <span class="date">{{day}} {{month}}</span>
+        <span class="day-week">{{dayweek}}</span>
+      </div>
       <!-- <li class='day-calendar' data-date="{{date}}">{{day}} {{month}}</li> -->
     </script>
     <!-- Fine template di Handlebars per il calendario -->

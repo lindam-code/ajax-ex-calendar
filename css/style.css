@@ -8,11 +8,6 @@
   font-weight: bold;
   padding-left: 15px;
 }
-.calendar {
-  display: flex;
-  flex-wrap: wrap;
-  width: 700px;
-}
 .calendar-title {
   display: flex;
   flex-wrap: wrap;
@@ -26,10 +21,21 @@
   font-weight: bold;
   font-size: 15px;
 }
+.calendar {
+  display: flex;
+  flex-wrap: wrap;
+  width: 700px;
+}
 .day-calendar {
   height: 100px;
   flex-basis: 100px;
   border: 1px solid black;
+}
+.date {
+  font-weight: bold;
+}
+.day-week {
+  font-style: italic;
 }
 .day-calendar.festivity {
   font-weight: bold;
