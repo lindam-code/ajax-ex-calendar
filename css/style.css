@@ -33,6 +33,7 @@
 }
 .date {
   font-weight: bold;
+  display: block;
 }
 .day-week {
   font-style: italic;

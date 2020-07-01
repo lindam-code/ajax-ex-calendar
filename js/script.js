@@ -73,13 +73,11 @@ $(document).ready(function(){
     var template = Handlebars.compile(source);
 
     // ------------------- BONUS -------------------
-    // Per allineare i gioni del calendario nella griglia
-    // Questa funzione day che ti ho lasciato permette di avere il giorno della settimana
-    // di quel determinato giorno, restituisce un numero da 0 a 6.
-    // dove 0 è lunedi e 6 è domenica in questo modo puoi sapere quanti elementi creare
-    // prima vuoti per allineare al giorno giusto il tuo giorno di partenza del mese.
+    // Per allineare i giorni del calendario nella griglia
+    // Questa funzione day permette di avere il giorno della settimana
+    // del primo giorno, restituisce un numero da 0 a 6.
+    // Creo elementi vuoti per allineare al giorno giusto il giorno di partenza del mese.
     var emptyElement = startDate.day();
-    console.log(emptyElement);
     for (var j = 0; j < emptyElement; j++) {
       var emptyHtml = template({});
       $('.calendar').append(emptyHtml);
@@ -141,7 +139,4 @@ $(document).ready(function(){
     // Fine chiamata ajax
   };
   // FINE FUNZIONI
-
-
-
 });
