@@ -72,6 +72,20 @@ $(document).ready(function(){
     var source = document.getElementById("calendar-template").innerHTML;
     var template = Handlebars.compile(source);
 
+    // ------------------- BONUS -------------------
+    // Per allineare i gioni del calendario nella griglia
+    // Questa funzione day che ti ho lasciato permette di avere il giorno della settimana
+    // di quel determinato giorno, restituisce un numero da 0 a 6.
+    // dove 0 è lunedi e 6 è domenica in questo modo puoi sapere quanti elementi creare
+    // prima vuoti per allineare al giorno giusto il tuo giorno di partenza del mese.
+    var emptyElement = startDate.day();
+    console.log(emptyElement);
+    for (var j = 0; j < emptyElement; j++) {
+      var emptyHtml = template({});
+      $('.calendar').append(emptyHtml);
+    }
+    // ------------------- FINE BONUS -------------------
+
     // Calcolo quanti giorni ha il mese corrente
     var totDayMonth = startDate.daysInMonth();
 
@@ -85,11 +99,10 @@ $(document).ready(function(){
       // var newDay = moment(startDate).add(i,'days');
       var day = (currentDay.format('D'));
       var month = (currentDay.format('MMMM'));
+      var dayWeek = currentDay.format('dddd');
       // Creo un attributo per salvare la data ed usarla per controllare se è festività
       var totalDate = currentDay.format('YYYY-MM-DD');
-      // Creo un attributo per salvare il giorno della settimana
-      // lo userò per stampare il calendario a griglia
-      var dayWeek = currentDay.format('dddd');
+
       // Stampa nel DOM usando il templato di Handlebars
       var dateToStamp = {day: day, month: month, date: totalDate, dayweek: dayWeek};
       var html = template(dateToStamp);
@@ -128,5 +141,7 @@ $(document).ready(function(){
     // Fine chiamata ajax
   };
   // FINE FUNZIONI
+
+
 
 });
